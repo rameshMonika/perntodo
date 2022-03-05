@@ -1,12 +1,17 @@
+
+const {databaseUserName, databaseHost, database, databasePassword, databasePort} = require('./databaseConfig')
+
+
+
 const Pool =require("pg").Pool;
 
 const pool=new Pool(
    {
-       user :"vmjybvhx",
-       password:"sOCnaMOLZoix6Z8zzzVCaf2-sfjPICYd",
-       host:"jelani.db.elephantsql.com",
-       port:5432,
-       database:'vmjybvhx'
+       user :databaseUserName,
+       password:databasePassword,
+       host:databaseHost,
+       port:databasePort,
+       database:database
    }
 );
 
