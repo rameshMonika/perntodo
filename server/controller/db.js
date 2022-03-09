@@ -1,5 +1,5 @@
 
-const {databaseUserName, databaseHost, database, databasePassword, databasePort} = require('./databaseConfig')
+const {databaseUserName, databaseHost, database, databasePassword, databasePort} = require('../databaseConfig')
 
 
 
