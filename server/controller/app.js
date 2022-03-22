@@ -114,6 +114,72 @@ app.get('/todos/:todoid', printDebugInfo,function (req, res) {
 
 
 
+//  create to do
+
+app.post('/todos', function(req,res) {
+
+    var description=req.body
+    var data = {
+        description : req.body ,
+      
+    };
+
+    console.log("post rewards function called.")
+    console.log("post data : " + JSON.stringify(data));
+    console.log("====================description====================================")
+    console.log(description)
+   console.log("======================================================================")
+
+    toDoList.createToDo(description,function(err,result) {
+        if(!err){
+            res.status(201).send("");
+        }else {
+            res.status(500).send("Error ! Cannot post reward");
+        }
+    });
+});
+
+
+//edit to do
+
+
+app.put('/todos/:todoid', function (req, res) {
+
+    var todoID=req.params.todoid
+
+    var todoDes = req.body.description ;
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    console.log("todoID " + todoID);
+    console.log("description " + todoDes);
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+    toDoList.editToDo(todoID, todoDes,function (err, result) {
+
+        console.log("toDoList.editToDo IDcalled");
+        if (!err) {
+            res.send(result);
+        } else {
+            res.status(500).send("Error ! Cannot edit todo");
+        }
+    });
+});
+
+
+//delete todo
+
+app.delete('/todos/:todoid', function (req, res) {
+    var todoID=req.params.todoid;
+ 
+   toDoList.deleteToDo(todoID,function (err, result) {
+        console.log(" toDoList.deleteToDo called");
+        if (!err) {
+            res.send(result);
+        } else {
+            res.status(500).send("Error ! Cannot get reward");
+        }
+    });
+})
+
 
 
 
