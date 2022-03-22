@@ -21,6 +21,8 @@ var cors = require('cors');
 var urlencodedParser=bodyParser.urlencoded({extended:false});
 
 
+var toDoList=require('../model/pernToDoList')
+
 
 //-------------------------------------------------------------------------
 // Middleware functions
@@ -78,6 +80,37 @@ app.use(cors());
 
 
 
+// get alltodos
+app.get('/alltodos', printDebugInfo,function (req, res) {
+
+    toDoList.getToDos(function (err, result) {
+        if (!err) {
+            res.send(result.rows);
+        }
+        else {
+            res.status(500).send("Some error");
+        }
+    });
+
+});
+
+
+
+
+// get a todo
+app.get('/todos/:todoid', printDebugInfo,function (req, res) {
+    var todoId=req.params.todoid;
+
+    toDoList.getToDo(todoId,function (err, result) {
+        if (!err) {
+            res.send(result.rows);
+        }
+        else {
+            res.status(500).send("Some error");
+        }
+    });
+
+});
 
 
 

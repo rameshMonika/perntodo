@@ -26,7 +26,7 @@ const ListTodos=()=>{
 
 
     async function getToDos(){
-        const res = await fetch("http://localhost:5000/alltodos")
+        const res = await fetch("http://localhost:3000/alltodos")
         const todoArray= await res.json();
         // console.log(todoArray)
 
@@ -40,7 +40,7 @@ const ListTodos=()=>{
     async function deleteToDo(todoid){
         try{
 
-        const res=    await fetch(`http://localhost:5000/todos/${todoid}`,{
+        const res=    await fetch(`http://localhost:3000/todos/${todoid}`,{
                 method:'DELETE'
             })
 
