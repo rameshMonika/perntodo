@@ -163,6 +163,6 @@ const port = process.env.PORT ||3000;
 // })
 
 //standard for express
-app.listen(port, hostname, () => {
+app.listen(port, () => {
     console.log(`Server started and accessible via http://${hostname}:${port}/`);
 });
