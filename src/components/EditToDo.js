@@ -9,7 +9,7 @@ const editText=async (id)=>{
     try{
   
         const body={description}
-        const res= await fetch(`http://localhost:3000/todos/${id}`,
+        const res= await fetch(`https://ptodohost.herokuapp.com/todos/${id}`,
         {method:'PUT',
         headers: { "Content-Type": "application/json" },
         body:JSON.stringify(body)
